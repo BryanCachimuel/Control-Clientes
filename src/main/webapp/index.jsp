@@ -1,0 +1,1 @@
+<meta http-equiv="refresh" content="0;url=${pageContext.request.contextPath}/ServletControlador"/> <!-- content -> número de segundos que hay que esperar para que se refresque la página -->
