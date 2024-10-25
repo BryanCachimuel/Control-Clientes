@@ -39,8 +39,27 @@ el navegador desde donde se extrae la información respectiva
                     </table>
                 </div>
             </div>
-           
-            
+            <!-- Inicio de las Tarjetas para los totales -->
+            <div class="col-md-3">
+                <div class="card text-center bg-danger text-white mb-3">
+                    <div class="card-body">
+                        <h3>Saldo Total</h3>
+                        <h4 class="display-4">
+                            <fmt:formatNumber value="${saldoTotal}" type="currency"/> <!-- el value saldoTotal viene desde el servlet -->
+                        </h4>
+                    </div>
+                </div>
+                <div class="card text-center bg-success text-white mb-3">
+                    <div class="card-body">
+                        <h3>Total Clientes</h3>
+                        <h4 class="display-4">
+                            <i class="fa-solid fa-users-line"></i> ${totalClientes} <!-- totalClientes viene desde el servlet -->
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin de las Tarjetas para los totales -->
+
         </div>
     </div>
 </section>
