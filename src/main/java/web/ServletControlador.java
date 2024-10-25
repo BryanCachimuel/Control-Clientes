@@ -24,8 +24,18 @@ public class ServletControlador extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         List<Cliente> clientes = new ClienteDaoJDBC().listar();
         System.out.println("clientes = " + clientes);
-        request.setAttribute("clientes", clientes);                               // con el alcance request se extiende el listado de clientes
+        request.setAttribute("clientes", clientes);                                  // con el alcance request se extiende el listado de clientes
+        request.setAttribute("totalClientes", clientes.size());                     // este dato se va a mandar hacia las vistas para obtener el total de clientes registrados
+        request.setAttribute("saldoTotal", this.calcularSaldoTotal(clientes));     // este dato se va a mandar hacia las vistas para obtener el saldoTotal de todos los clientes
         request.getRequestDispatcher("clientes.jsp").forward(request, response);  // se envia la información al archivo clientes.jsp
     }
     
+    /* método para calcular el saldo total de todos los clientes registrados */
+    private double calcularSaldoTotal(List<Cliente> clientes){
+        double saldoTotal = 0;
+        for(Cliente cliente : clientes){  // itera el saldo de cadacliente y lo suma y total final se almacena en la variable saldoTotal
+            saldoTotal += cliente.getSaldo();
+        }
+        return saldoTotal;
+    }
 }
