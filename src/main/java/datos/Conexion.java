@@ -11,16 +11,20 @@ public class Conexion {
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD = "admin1994";
 
+    private static BasicDataSource dataSource;
+
     // Método para recuperar la conexión hacia la base de datos
     public static DataSource getDataSource() {
-        BasicDataSource ds = new BasicDataSource();
-        ds.setUrl(JDBC_URL);
-        ds.setUsername(JDBC_USER);
-        ds.setPassword(JDBC_PASSWORD);
+        if (dataSource == null) {
+            dataSource = new BasicDataSource();
+            dataSource.setUrl(JDBC_URL);
+            dataSource.setUsername(JDBC_USER);
+            dataSource.setPassword(JDBC_PASSWORD);
+            // se define el tamaño inicial del pool de conexiones
+            dataSource.setInitialSize(50);
+        }
 
-        // se define el tamaño inicial del pool de conexiones
-        ds.setInitialSize(50);
-        return ds;
+        return dataSource;
     }
 
     // Método para obtener una conexión hacia la base de datos
