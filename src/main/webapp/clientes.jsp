@@ -10,17 +10,17 @@
     <body>
 
         <!-- Cabecero -->
-        <jsp:include page="WEB-INF/paginas/comunes/cabecero.jsp" />
+        <jsp:include page="/WEB-INF/paginas/comunes/cabecero.jsp" />
 
         <!-- Botones de Navegación -->
-        <jsp:include page="WEB-INF/paginas/comunes/botonesNavegacion.jsp" />
+        <jsp:include page="/WEB-INF/paginas/comunes/botonesNavegacion.jsp" />
 
 
         <!-- listado de clientes traido desde el directorio WEB-INF/cliente/listadoCliente.jsp -->
-        <jsp:include page="WEB-INF/paginas/cliente/listadoClientes.jsp"/>
+        <jsp:include page="/WEB-INF/paginas/cliente/listadoClientes.jsp"/>
 
         <!-- Pie de Página -->
-        <jsp:include page="WEB-INF/paginas/comunes/piePagina.jsp" />
+        <jsp:include page="/WEB-INF/paginas/comunes/piePagina.jsp" />
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
