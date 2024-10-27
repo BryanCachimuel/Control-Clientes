@@ -77,7 +77,9 @@ public class ServletControlador extends HttpServlet {
                 case "insertar":
                     this.insertarCliente(request, response);
                     break;
-
+                case "modificar":
+                    this.modificarCliente(request, response);
+                    break;
                 default:
                     this.accionDefault(request, response);
             }
@@ -104,6 +106,26 @@ public class ServletControlador extends HttpServlet {
         int registrosInsertados = new ClienteDaoJDBC().insertar(cliente);   // insertamos el nuevo objeto en la base de datos
         System.out.println("Registros Insertados: " + registrosInsertados); // la variable no era necesario definirla pero es para ver por consola los registros insertados
 
+        this.accionDefault(request, response);  // redirigimos hacia la acción por default
+    }
+    
+    private void modificarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        int idCliente = Integer.parseInt(request.getParameter("idCliente")); // recuperamos los valores del formulario editarCliente
+        String nombre = request.getParameter("nombre");         
+        String apellido = request.getParameter("apellido");
+        String email = request.getParameter("email");
+        String telefono = request.getParameter("telefono");
+        double saldo = 0;                                   // en caso de que no se envie ningun valor se ponga 0 por defecto
+        String saldoString = request.getParameter("saldo");
+        
+        if (saldoString != null & !"".equals(saldoString)) {
+            saldo = Double.parseDouble(saldoString);
+        }
+        Cliente cliente = new Cliente(idCliente, nombre, apellido, email, telefono, saldo);  // se crea el objeto de cliente (modelo)
+        
+        int registroModificado = new ClienteDaoJDBC().actualizar(cliente);
+        System.out.println("Registro Modificado: " +registroModificado);
+        
         this.accionDefault(request, response);  // redirigimos hacia la acción por default
     }
 }
