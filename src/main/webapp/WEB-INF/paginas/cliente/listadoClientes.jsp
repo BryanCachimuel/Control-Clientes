@@ -31,7 +31,9 @@ el navegador desde donde se extrae la información respectiva
                                     <td>${cliente.nombre}  ${cliente.apellido}</td>
                                     <td> <fmt:formatNumber value="${cliente.saldo}" type="currency"/>  </td> <!-- type="currency" -> formato moneda -->
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/ServletControlador?accion=editar&idCliente=${cliente.idCliente}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="${pageContext.request.contextPath}/ServletControlador?accion=editar&idCliente=${cliente.idCliente}" class="btn btn-info" title="Acciones">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -63,3 +65,6 @@ el navegador desde donde se extrae la información respectiva
         </div>
     </div>
 </section>
+                        
+<!-- Agregar cliente Modal -->
+<jsp:include page="/WEB-INF/paginas/cliente/agregarCliente.jsp"/>
